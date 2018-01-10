@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
         mPublish = (Button) findViewById(R.id.btnPublish);
         listItems = getResources().getStringArray(R.array.publish_item);
 
+        ListView view = (ListView)findViewById(R.id.offerListView);
+        view.setEmptyView(findViewById(R.id.empty_list_item));
+
         mPublish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                 });
                 final EditText offerTextField = new EditText(MainActivity.this);
+                offerTextField.setHint("Write your offer here...");
                 mBuilder.setView(offerTextField);
                 mBuilder.setCancelable(false);
                 mBuilder.setPositiveButton("Publish offer", new DialogInterface.OnClickListener() {
