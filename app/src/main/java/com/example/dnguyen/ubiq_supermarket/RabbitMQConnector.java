@@ -40,7 +40,8 @@ public class RabbitMQConnector {
     public void publishMessage(String routingKey, String msgContent) {
         try {
             this.channel.basicPublish(EXCHANGE_NAME, routingKey, null, msgContent.getBytes());
-            Log.e("rabbitmq", "routingkey: " + routingKey + " message: " + msgContent);
+            Log.e("rabbitmq", "routingKey: " + routingKey);
+            Log.e("rabbitmq", "msgContent: " + msgContent);
         } catch (IOException e) {
             e.printStackTrace();
         }

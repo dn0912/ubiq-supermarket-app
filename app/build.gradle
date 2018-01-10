@@ -26,4 +26,5 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
     implementation files('libs/amqp-client-4.2.2.jar')
+    implementation 'org.slf4j:slf4j-android:1.7.25'
 }

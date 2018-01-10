@@ -15,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
 
     Button mPublish;
     String[] listItems;
+    String chosenItem;
+    RabbitMQConnector rabbitConn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
         StrictMode.setThreadPolicy(policy);
 
+        rabbitConn = new RabbitMQConnector();
         mPublish = (Button) findViewById(R.id.btnPublish);
         listItems = getResources().getStringArray(R.array.publish_item);
 
@@ -35,15 +38,16 @@ public class MainActivity extends AppCompatActivity {
                 mBuilder.setSingleChoiceItems(listItems, -1, new DialogInterface.OnClickListener(){
                     @Override
                     public void onClick(DialogInterface dialogInterface, int position){
-
+                        chosenItem = listItems[position];
                     }
                 });
-                final EditText offerText = new EditText(MainActivity.this);
-                mBuilder.setView(offerText);
+                final EditText offerTextField = new EditText(MainActivity.this);
+                mBuilder.setView(offerTextField);
                 mBuilder.setCancelable(false);
                 mBuilder.setPositiveButton("Publish offer", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        String offerContent = offerTextField.getText().toString();
+                        rabbitConn.publishMessage("offers."+ chosenItem + ".*", chosenItem + ": " + offerContent);
                     }
                 });
                 mBuilder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
