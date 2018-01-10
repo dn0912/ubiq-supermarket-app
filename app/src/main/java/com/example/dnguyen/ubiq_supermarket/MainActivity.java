@@ -1,6 +1,7 @@
 package com.example.dnguyen.ubiq_supermarket;
 
 import android.content.DialogInterface;
+import android.os.StrictMode;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitNetwork().build();
+        StrictMode.setThreadPolicy(policy);
 
         mPublish = (Button) findViewById(R.id.btnPublish);
         listItems = getResources().getStringArray(R.array.publish_item);
