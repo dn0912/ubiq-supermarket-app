@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mPublish = findViewById(R.id.btnPublish);
+        mPublish = (Button) findViewById(R.id.btnPublish);
         listItems = getResources().getStringArray(R.array.publish_item);
 
         mPublish.setOnClickListener(new View.OnClickListener() {
@@ -34,8 +34,8 @@ public class MainActivity extends AppCompatActivity {
 
                     }
                 });
-                //final EditText offerText = new EditText(MainActivity.this);
-                //mBuilder.setView(offerText);
+                final EditText offerText = new EditText(MainActivity.this);
+                mBuilder.setView(offerText);
                 mBuilder.setCancelable(false);
                 mBuilder.setPositiveButton("Publish offer", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogInterface, int i) {
@@ -48,6 +48,9 @@ public class MainActivity extends AppCompatActivity {
                         dialogInterface.dismiss();
                     }
                 });
+
+                AlertDialog mDialog = mBuilder.create();
+                mDialog.show();
             }
         });
     }
