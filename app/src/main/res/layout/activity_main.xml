@@ -7,34 +7,28 @@
     tools:context="com.example.dnguyen.ubiq_supermarket.MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnPublish"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Button"
+        android:text="Publish offer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.769" />
+        app:layout_constraintVertical_bias="0.637" />
 
-    <EditText
-        android:id="@+id/message"
-        android:layout_width="260dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="368dp"
+        android:layout_height="268dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:hint="Write a offer description"
-        android:inputType="textCapSentences|textAutoCorrect"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.951" />
+        app:layout_constraintTop_toTopOf="parent" />
 </android.support.constraint.ConstraintLayout>
