@@ -5,27 +5,27 @@ package com.example.dnguyen.ubiq_supermarket;
  */
 
 public class Product {
-    private String name;
-    private boolean selected;
+    String name;
+    String price;
+    String product_type;
 
-    public Product(String name, Boolean selected) {
-        this.name = name;
-        this.selected = selected;
+    public Product(String name, String price, String product_type ) {
+        this.name=name;
+        this.price=price;
+        this.product_type=product_type;
+
     }
 
     public String getName() {
-        return this.name;
+        return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String getPrice() {
+        return price;
     }
 
-    public boolean isSelected() {
-        return this.selected;
+    public String getProduct_type() {
+        return product_type;
     }
 
-    public void setSelected(boolean selected) {
-        this.selected = selected;
-    }
 }

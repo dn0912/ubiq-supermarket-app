@@ -1,8 +1,3 @@
 <resources>
     <string name="app_name">Duc\'s Supermarket</string>
-    <string-array name="publish_item">
-        <item>Test1</item>
-        <item>Test2</item>
-        <item>Test3</item>
-    </string-array>
 </resources>
