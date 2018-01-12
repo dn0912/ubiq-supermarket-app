@@ -7,10 +7,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
         ListView view = (ListView)findViewById(R.id.offerListView);
         view.setEmptyView(findViewById(R.id.empty_list_item));
 
+        final List< String > listElementsArrayList = new ArrayList<String>();
+        final ArrayAdapter < String > adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, listElementsArrayList);
+        view.setAdapter(adapter);
+
         mPublish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -52,6 +63,10 @@ public class MainActivity extends AppCompatActivity {
                 mBuilder.setPositiveButton("Publish offer", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialogInterface, int i) {
                         String offerContent = offerTextField.getText().toString();
+                        Date now = new Date();
+                        SimpleDateFormat ft = new SimpleDateFormat ("hh:mm:ss");
+                        listElementsArrayList.add("[" + ft.format(now) + "] " + chosenItem + ": " + offerContent);
+                        adapter.notifyDataSetChanged();
                         rabbitConn.publishMessage("offers."+ chosenItem + ".*", chosenItem + ": " + offerContent);
                     }
                 });
